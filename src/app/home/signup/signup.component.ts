@@ -66,7 +66,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   signup() {
     const newUser = this.signupForm.getRawValue() as NewUser;
     this._signupService.signup(newUser).subscribe({
-      complete: () => {
+      next: () => {
         this._router.navigate(['']);
       },
       error: (err) => {

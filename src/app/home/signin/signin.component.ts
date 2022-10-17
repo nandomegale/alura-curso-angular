@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit, AfterViewInit {
     const password = this.loginForm.get('password')?.value;
 
     this._authService.authenticate(userName, password).subscribe({
-      complete: () => {
+      next: () => {
         this._router.navigate(['user/', userName]);
       },
       error: (err) => {

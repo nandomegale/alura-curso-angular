@@ -8,3 +8,9 @@ export interface IPhoto {
   comments: number;
   userId: number;
 }
+
+export interface IPhotoComment {
+  date: Date;
+  text: string;
+  userName: string;
+}
