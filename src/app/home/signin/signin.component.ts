@@ -40,7 +40,6 @@ export class SignInComponent implements OnInit, AfterViewInit {
 
     this._authService.authenticate(userName, password).subscribe({
       complete: () => {
-        console.log('autenticado');
         this._router.navigate(['user/', userName]);
       },
       error: (err) => {

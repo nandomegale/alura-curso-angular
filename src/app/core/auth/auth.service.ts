@@ -22,7 +22,6 @@ export class AuthService {
         tap((res: HttpResponse<any>) => {
           const authToken: string | null = res.headers.get('x-access-token');
           this._userService.setToken(String(authToken));
-          console.log(authToken);
         })
       );
   }
