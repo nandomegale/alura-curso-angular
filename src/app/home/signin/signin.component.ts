@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 
@@ -20,7 +21,7 @@ export class SignInComponent implements OnInit, AfterViewInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
   ) {}
 
   ngOnInit() {

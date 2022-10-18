@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { IPhoto, IPhotoComment } from './photo.model';
+import { environment } from 'src/environments/environment';
 
-const API = 'http://localhost:3000';
+const API = environment.ApiURL;
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,10 @@ export class PhotoService {
     formData.append('description', description);
     formData.append('allowComments', allowComments ? 'true' : 'false'),
       formData.append('imageFile', file);
-    return this._http.post(API + '/photos/upload', formData);
+    return this._http.post(API + '/photos/upload', formData, {
+      observe: 'events',
+      reportProgress: true,
+    });
   }
 
   findById(photoId: number): Observable<IPhoto> {
@@ -48,5 +52,16 @@ export class PhotoService {
 
   removePhoto(photoId: number) {
     return this._http.delete(API + '/photos/' + photoId);
+  }
+
+  like(photoId: number) {
+    return this._http
+      .post(API + '/photos/' + photoId + '/like', {}, { observe: 'response' })
+      .pipe(map(() => true))
+      .pipe(
+        catchError((err) => {
+          return err.status == '304' ? of(false) : throwError(() => err);
+        })
+      );
   }
 }
