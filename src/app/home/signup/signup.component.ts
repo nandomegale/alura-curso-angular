@@ -11,6 +11,7 @@ import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validat
 import { NewUser } from './new-user.model';
 import { SignUpService } from './signup.service';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
+import { userNamePassword } from './username-password.validator';
 
 @Component({
   templateUrl: 'signup.component.html',
@@ -53,9 +54,12 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.maxLength(14),
+          Validators.maxLength(18),
         ],
       ],
+    },
+    {
+      validator: userNamePassword
     });
   }
 

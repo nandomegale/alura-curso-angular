@@ -10,11 +10,11 @@
       autofocus
     />
     <ap-vmessage
-      *ngIf="this.signupForm.get('email')?.errors?.['required']"
+      *ngIf="this.signupForm.get('email')?.errors?.['required'] && this.signupForm.get('email')?.touched"
       text="Email name is required!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('email')?.errors?.['email']"
+      *ngIf="this.signupForm.get('email')?.errors?.['email'] && this.signupForm.get('email')?.touched"
       text="Invalid Email!"
     ></ap-vmessage>
   </div>
@@ -26,15 +26,15 @@
       class="form-control"
     />
     <ap-vmessage
-      *ngIf="this.signupForm.get('fullName')?.errors?.['required']"
+      *ngIf="this.signupForm.get('fullName')?.errors?.['required'] && this.signupForm.get('fullName')?.touched"
       text="Full name name is required!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('fullName')?.errors?.['minlength']"
+      *ngIf="this.signupForm.get('fullName')?.errors?.['minlength'] && this.signupForm.get('fullName')?.touched"
       text="Minimun length is 2!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('fullName')?.errors?.['maxlength']"
+      *ngIf="this.signupForm.get('fullName')?.errors?.['maxlength'] && this.signupForm.get('fullName')?.touched"
       text="Maximun length is 40!"
     ></ap-vmessage>
   </div>
@@ -46,19 +46,19 @@
       class="form-control"
     />
     <ap-vmessage
-      *ngIf="this.signupForm.get('userName')?.errors?.['required']"
+      *ngIf="this.signupForm.get('userName')?.errors?.['required'] && this.signupForm.get('userName')?.touched"
       text="User name is required!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('userName')?.errors?.['minlength']"
+      *ngIf="this.signupForm.get('userName')?.errors?.['minlength'] && this.signupForm.get('userName')?.touched"
       text="Minimun length is 2!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('userName')?.errors?.['maxlength']"
+      *ngIf="this.signupForm.get('userName')?.errors?.['maxlength'] && this.signupForm.get('userName')?.touched"
       text="Maximun length is 30!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('userName')?.errors?.['lowercase']"
+      *ngIf="this.signupForm.get('userName')?.errors?.['lowercase'] && this.signupForm.get('userName')?.touched"
       text="Must be lower case!"
     ></ap-vmessage>
     <ap-vmessage
@@ -79,16 +79,20 @@
       class="form-control"
     />
     <ap-vmessage
-      *ngIf="this.signupForm.get('password')?.errors?.['required']"
+      *ngIf="this.signupForm.get('password')?.errors?.['required'] && this.signupForm.get('password')?.touched"
       text="Password is required!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('password')?.errors?.['minlength']"
+      *ngIf="this.signupForm.get('password')?.errors?.['minlength'] && this.signupForm.get('password')?.touched"
       text="Minimun length is 8!"
     ></ap-vmessage>
     <ap-vmessage
-      *ngIf="this.signupForm.get('password')?.errors?.['maxlength']"
-      text="Maximun length is 14!"
+      *ngIf="this.signupForm.get('password')?.errors?.['maxlength'] && this.signupForm.get('password')?.touched"
+      text="Maximun length is 18!"
+    ></ap-vmessage>
+    <ap-vmessage
+      *ngIf="this.signupForm?.errors?.['userNamePassword']"
+      text="Username and password must be different"
     ></ap-vmessage>
   </div>
 
